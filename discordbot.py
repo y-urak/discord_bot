@@ -73,12 +73,6 @@ ANS_CNT = 0
 client = commands.Bot(" ")
 ui = UI(client)
 
-# 起動時に動作する処理
-@client.event
-async def on_ready():
-    # 起動したらターミナルにログイン通知が表示される
-    print('ログインしました')
-
 async def map_name_sender(message, cmd, map_commands):
     for map_name in map_commands:
         await message.channel.send("/" + cmd[1:] + " " + map_name[:len(map_name) - len(".jpg")])
@@ -201,7 +195,7 @@ async def on_message(message):
 # 返信する非同期関数を定義
 async def reply(message):
     global start_quiz
-    if not start_quiz :
+    if not start_quiz:
         reply = f'お！？ {message.author.mention} やるか？ '  # 返信メッセージの作成
         start_quiz = True
     else:
