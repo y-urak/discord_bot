@@ -24,7 +24,7 @@ for f in map_files:
     tmp = f.split("/")
     map_name = tmp[4]
     print(map_name)
-    map_commands_str.append(map_name[:len(map_name[1])])
+    map_commands_str.append(map_name[:len(map_name)])
 
 zeta_map_files = glob.glob("./image/zeta_map/*")
 zeta_map_commands_str = []
@@ -32,7 +32,7 @@ for f in zeta_map_files:
     tmp = f.split("/")
     map_name = tmp[3]
     print(map_name)
-    zeta_map_commands_str.append(map_name[:len(map_name[1])])
+    zeta_map_commands_str.append(map_name[:len(map_name)])
 
 start_quiz = True
 # ACENT=0,BIND=1,ICEBOX=2,Breeze=3,Haven=4,Split=5,Fracture=6
@@ -45,7 +45,7 @@ for path in path_load_list:
         tmp = f.split("/")
         map_name = tmp[3]
         print(map_name)
-        quiz_tmp.append(map_name[:len(map_name[1])])
+        quiz_tmp.append(map_name[:len(map_name)])
     quiz_image_container.append(quiz_tmp)
 
 # 問題の内容のinput
