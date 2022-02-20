@@ -5,7 +5,7 @@
 # SPOILER https://stackoverflow.com/questions/60408884/how-do-i-get-the-bot-to-post-spoiler-images-in-discord-py
 import discord
 from discord.ext import commands
-from discord_ui import UI, LinkButton, Button, SelectMenu, SelectOption
+from discord_ui import UI, Button
 from asyncio import TimeoutError
 import glob
 import csv
