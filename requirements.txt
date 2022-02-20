@@ -2,4 +2,4 @@ discord >= 1.7.3
 discord-ui >=5.1.6
 glob2 >= 0.7
 async-timeout >= 3.0.1
-discord.py >=1.7.3
+
