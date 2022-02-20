@@ -65,6 +65,7 @@ client = commands.Bot(" ")
 ui = UI(client)
 
 async def map_name_sender(message, cmd, map_commands):
+    print(map_commands)
     for map_name in map_commands:
         await message.channel.send("/" + cmd[1:] + " " + map_name[:len(map_name) - len(".jpg")])
 
