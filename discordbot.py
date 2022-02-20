@@ -133,7 +133,7 @@ async def map_quiz_generater(message, map_num=0, image_path="valo_mapdata/acent/
 @client.event
 async def on_message(message):
     global ANS_CNT
-    if message.content == '?map' or  message.content == '?ans':
+    if message.content == '?map' or message.content == '?ans':
         await map_name_sender(message, message.content, map_commands_str)
 
     if message.content.startswith('/zeta_map'):
@@ -160,7 +160,7 @@ async def on_message(message):
         if start_quiz:
             await map_quiz_generater(message, 2, "valo_mapdata/icebox/", message.content)
         else:
-            await message.channel.send('/ans '+ message.content[1:])
+            await message.channel.send('/ans ' + message.content[1:])
     if message.content == '/breeze':
         if start_quiz:
             await map_quiz_generater(message, 3, "valo_mapdata/breeze/", message.content)
@@ -170,20 +170,20 @@ async def on_message(message):
         if start_quiz:
             await map_quiz_generater(message, 4, "valo_mapdata/" + message.content[1:]+"/", message.content)
         else:
-            await message.channel.send('/ans '+ message.content[1:])
+            await message.channel.send('/ans ' + message.content[1:])
     if message.content == '/split':
         if start_quiz:
             await map_quiz_generater(message, 5, "valo_mapdata/" + message.content[1:]+"/", message.content)
         else:
-            await message.channel.send('/ans '+ message.content[1:])
+            await message.channel.send('/ans ' + message.content[1:])
     if message.content == '/frac':
         if start_quiz:
             await map_quiz_generater(message, 6, "valo_mapdata/" + message.content[1:]+"/", message.content)
         else:
-            await message.channel.send('/ans '+ message.content[1:])
+            await message.channel.send('/ans ' + message.content[1:])
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
-            return
+        return
     if message.content.startswith('/ans'):
         # 入力を分割
         input_list = message.content.split()
@@ -195,19 +195,19 @@ async def on_message(message):
         await map_name_sender(message, message.content, zeta_map_commands_str)
 
     # 発言時に実行されるイベントハンドラを定義
-    if client.user in message.mentions: # 話しかけられたかの判定
-        await reply(message) # 返信する非同期関数を実行
+    if client.user in message.mentions:  # 話しかけられたかの判定
+        await reply(message)  # 返信する非同期関数を実行
 
 # 返信する非同期関数を定義
 async def reply(message):
     global start_quiz
     if start_quiz == False:
-        reply = f'お！？ {message.author.mention} やるか？ ' # 返信メッセージの作成
+        reply = f'お！？ {message.author.mention} やるか？ '  # 返信メッセージの作成
         start_quiz = True
     else:
-        reply = f'終わっとくか～'  # 返信メッセージの作成
+        reply = f'終わっとくか～'   # 返信メッセージの作成
         start_quiz = False
-    await message.channel.send(reply) # 返信メッセージを送信
+    await message.channel.send(reply)  # 返信メッセージを送信
 
 
 
@@ -219,7 +219,7 @@ async def greet():
 # bot起動時に実行されるイベントハンドラを定義
 @client.event
 async def on_ready():
-    await greet() # 挨拶する非同期関数を実行
+    await greet()  # 挨拶する非同期関数を実行
 
 
 # Botの起動とDiscordサーバーへの接続
