@@ -159,7 +159,7 @@ async def on_message(message):
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
-    if message.content =='/map':
+    if message.content == '/map':
         await message.channel.send("/ans マップ名")
     if message.content == '?map' or message.content == '?ans':
         await map_name_sender(message, '?map', map_commands_str)
