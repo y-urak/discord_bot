@@ -168,17 +168,17 @@ async def on_message(message):
             await message.channel.send('/ans breeze')
     if message.content == '/heaven':
         if start_quiz:
-            await map_quiz_generater(message, 4, "valo_mapdata/" + message.content[1:]+"/", message.content)
+            await map_quiz_generater(message, 4, "valo_mapdata/" + message.content[1:] + "/", message.content)
         else:
             await message.channel.send('/ans ' + message.content[1:])
     if message.content == '/split':
         if start_quiz:
-            await map_quiz_generater(message, 5, "valo_mapdata/" + message.content[1:]+"/", message.content)
+            await map_quiz_generater(message, 5, "valo_mapdata/" + message.content[1:] + "/", message.content)
         else:
             await message.channel.send('/ans ' + message.content[1:])
     if message.content == '/frac':
         if start_quiz:
-            await map_quiz_generater(message, 6, "valo_mapdata/" + message.content[1:]+"/", message.content)
+            await map_quiz_generater(message, 6, "valo_mapdata/" + message.content[1:] + "/", message.content)
         else:
             await message.channel.send('/ans ' + message.content[1:])
     # メッセージ送信者がBotだった場合は無視する
@@ -201,15 +201,13 @@ async def on_message(message):
 # 返信する非同期関数を定義
 async def reply(message):
     global start_quiz
-    if start_quiz == False:
+    if not start_quiz :
         reply = f'お！？ {message.author.mention} やるか？ '  # 返信メッセージの作成
         start_quiz = True
     else:
-        reply = f'終わっとくか～'   # 返信メッセージの作成
+        reply = '終わっとくか～'   # 返信メッセージの作成
         start_quiz = False
     await message.channel.send(reply)  # 返信メッセージを送信
-
-
 
 # 任意のチャンネルで挨拶する非同期関数を定義
 async def greet():
@@ -220,7 +218,6 @@ async def greet():
 @client.event
 async def on_ready():
     await greet()  # 挨拶する非同期関数を実行
-
 
 # Botの起動とDiscordサーバーへの接続
 client.run(TOKEN)
