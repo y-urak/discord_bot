@@ -83,20 +83,20 @@ async def map_name_sender(message, cmd, map_commands):
     for map_name in map_commands:
         await message.channel.send("/" + cmd[1:] + " " + map_name[:len(map_name) - len(".jpg")])
 
-async def map_image_sender(message, map_name, files, path = "image/map/overall/", extension = ".jpg"):
+async def map_image_sender(message, map_name, files, path="image/map/overall/", extension=".jpg"):
     print(path + map_name + extension)
     print(files)
     for f in files:
         if f.endswith(map_name + extension):
             print(path + map_name + extension)
-            await message.channel.send(file = discord.File(path + map_name + extension))
+            await message.channel.send(file=discord.File(path + map_name + extension))
             return
     await message.channel.send("マップ名が違います")
 
-async def map_quiz_generater(message, map_num = 0, image_path = "valo_mapdata/acent/", map_cmd = "/acent"):
+async def map_quiz_generater(message, map_num=0, image_path="valo_mapdata/acent/", map_cmd="/acent"):
     global ANS_CNT
-    random_list = random.sample(range(0, len(quiz_image_container[map_num])), k = len(quiz_image_container[map_num]))
-    random_range = random.sample(range(0, 3), k = 3)
+    random_list = random.sample(range(0, len(quiz_image_container[map_num])), k=len(quiz_image_container[map_num]))
+    random_range = random.sample(range(0, 3), k=3)
     output_list = [random_list[random_range[0]], random_list[random_range[1]], random_list[random_range[2]]]
     print(random_list, random_range)
     # rand_ans = random.randrange(len(quiz_image_container[0]))
@@ -105,16 +105,16 @@ async def map_quiz_generater(message, map_num = 0, image_path = "valo_mapdata/ac
     print(rand_str)
     await map_image_sender(message, rand_str, quiz_image_container[map_num], image_path, ".png")
 
-    msg = await message.channel.send("〇の名前は？", components = [
+    msg = await message.channel.send("〇の名前は？", components=[
         # [Button("press me", color="green"), LinkButton("https://discord.com", emoji="😁")],
-        Button(list_csv[map_num][output_list[0]], color = "green"),
-        Button(list_csv[map_num][output_list[1]], color = "green"),
-        Button(list_csv[map_num][output_list[2]], color = "green"),
+        Button(list_csv[map_num][output_list[0]], color="green"),
+        Button(list_csv[map_num][output_list[1]], color="green"),
+        Button(list_csv[map_num][output_list[2]], color="green"),
         Button("終わり!")
     ])
     try:
         # by=message.authorで押す人の制約つけれる
-        btn = await msg.wait_for("button", client, timeout = 60 * 60 * 60)
+        btn = await msg.wait_for("button", client, timeout=60 * 60 * 60)
         if str(btn.component) == "終わり!":
             await btn.respond("連続正解数 :" + str(ANS_CNT) + ", ans : " + list_csv[0][random_list[0]])
             ANS_CNT = 0
