@@ -118,16 +118,6 @@ async def map_quiz_generater(message, map_num=0, image_path="valo_mapdata/acent/
 @client.event
 async def on_message(message):
     global ANS_CNT
-    if message.content == '?map' or message.content == '?ans':
-        await map_name_sender(message, message.content, map_commands_str)
-
-    if message.content.startswith('/zeta_map'):
-        # 入力を分割
-        input_list = message.content.split()
-        if len(input_list) != 2:
-            await message.channel.send("/zeta_map マップ名")
-        else:
-            await map_image_sender(message, input_list[1], zeta_map_files, "image/zeta_map/")
     # 画像とボタンを利用してクイズを出す
     # ACENT=0,BIND=1,ICEBOX=2,Breeze=3,Haven=4,Split=5,Fracture=6
     if message.content == '/acent':
@@ -169,6 +159,18 @@ async def on_message(message):
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
+    if message.content =='/map':
+        await message.channel.send("/ans マップ名")
+    if message.content == '?map' or message.content == '?ans':
+        await map_name_sender(message, '?map', map_commands_str)
+
+    if message.content.startswith('/zeta_map'):
+        # 入力を分割
+        input_list = message.content.split()
+        if len(input_list) != 2:
+            await message.channel.send("/zeta_map マップ名")
+        else:
+            await map_image_sender(message, input_list[1], zeta_map_files, "image/zeta_map/")
     if message.content.startswith('/ans'):
         # 入力を分割
         input_list = message.content.split()
