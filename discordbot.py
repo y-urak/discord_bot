@@ -12,6 +12,7 @@ import csv
 import random
 
 # ----- 前処理 -------
+TOKEN = 'OTQxMzExNjQyNDEzNzE1NTA2.YgUGyA.-mGr8VPuZ642FaCO88I1aX9zOlE'
 # 任意のチャンネルID(int)
 CHANNEL_ID = 895578786303733771
 
