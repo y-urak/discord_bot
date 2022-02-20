@@ -60,7 +60,7 @@ quiz_image_container.append(quiz_tmp)
 # 問題の内容のinput
 # ACENT=0,BIND=1,ICEBOX=2,Breeze=3,Haven=4,Split=5,Fracture=6
 # https://script.google.com/home/projects/1F5b4P1ZTg3mKhHuqU3XwWMKm40Ue1Q_1mNUtwPNRw8RjbNnot110fH4d/edit
-with open('valo_mapdata/valo_quiz_data.csv', 'r',encoding="utf-8_sig") as f:
+with open('valo_mapdata/valo_quiz_data.csv', 'r', encoding="utf-8_sig") as f:
     reader = csv.reader(f)
     list_csv = [row for row in reader]
 print(list_csv)
@@ -81,7 +81,7 @@ async def on_ready():
 
 async def map_name_sender(message, cmd, map_commands):
     for map_name in map_commands:
-        await message.channel.send("/" + cmd[1:] + " " + map_name[:len(map_name)-len(".jpg")])
+        await message.channel.send("/" + cmd[1:] + " " + map_name[:len(map_name) - len(".jpg")])
 
 async def map_image_sender(message, map_name, files, path = "image/map/overall/", extension = ".jpg"):
     print(path + map_name + extension)
@@ -148,39 +148,39 @@ async def on_message(message):
     if message.content == '/acent':
         if start_quiz:
             await map_quiz_generater(message, 0)
-        else :
+        else:
             # ネタバレしたくないならSPOILER入れてもいいかも
             await message.channel.send('/ans acent')
     if message.content == '/bind':
         if start_quiz:
             await map_quiz_generater(message, 1, "valo_mapdata/bind/", message.content)
-        else :
+        else:
             await message.channel.send('/ans bind')
     if message.content == '/icebox':
         if start_quiz:
             await map_quiz_generater(message, 2, "valo_mapdata/icebox/", message.content)
-        else :
-            await message.channel.send('/ans '+message.content[1:])
+        else:
+            await message.channel.send('/ans '+ message.content[1:])
     if message.content == '/breeze':
         if start_quiz:
             await map_quiz_generater(message, 3, "valo_mapdata/breeze/", message.content)
-        else :
+        else:
             await message.channel.send('/ans breeze')
     if message.content == '/heaven':
         if start_quiz:
-            await map_quiz_generater(message, 4, "valo_mapdata/"+message.content[1:]+"/", message.content)
-        else :
-            await message.channel.send('/ans '+message.content[1:])
+            await map_quiz_generater(message, 4, "valo_mapdata/" + message.content[1:]+"/", message.content)
+        else:
+            await message.channel.send('/ans '+ message.content[1:])
     if message.content == '/split':
         if start_quiz:
-            await map_quiz_generater(message, 5, "valo_mapdata/"+message.content[1:]+"/", message.content)
-        else :
-            await message.channel.send('/ans '+message.content[1:])
+            await map_quiz_generater(message, 5, "valo_mapdata/" + message.content[1:]+"/", message.content)
+        else:
+            await message.channel.send('/ans '+ message.content[1:])
     if message.content == '/frac':
         if start_quiz:
-            await map_quiz_generater(message, 6, "valo_mapdata/"+message.content[1:]+"/", message.content)
-        else :
-            await message.channel.send('/ans '+message.content[1:])
+            await map_quiz_generater(message, 6, "valo_mapdata/" + message.content[1:]+"/", message.content)
+        else:
+            await message.channel.send('/ans '+ message.content[1:])
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
             return
@@ -204,7 +204,7 @@ async def reply(message):
     if start_quiz == False:
         reply = f'お！？ {message.author.mention} やるか？ ' # 返信メッセージの作成
         start_quiz = True
-    else :
+    else:
         reply = f'終わっとくか～'  # 返信メッセージの作成
         start_quiz = False
     await message.channel.send(reply) # 返信メッセージを送信
