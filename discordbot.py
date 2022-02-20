@@ -12,8 +12,6 @@ import csv
 import random
 
 # ----- 前処理 -------
-# 自分のBotのアクセストークン
-TOKEN = 'OTQxMzExNjQyNDEzNzE1NTA2.YgUGyA.jQ2g4OIiiPTI1swBkAmHkzHmLCo'
 # 任意のチャンネルID(int)
 CHANNEL_ID = 895578786303733771
 
