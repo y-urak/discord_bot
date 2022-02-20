@@ -35,7 +35,7 @@ for f in zeta_map_files:
 
 start_quiz = True
 # ACENT=0,BIND=1,ICEBOX=2,Breeze=3,Haven=4,Split=5,Fracture=6
-path_load_list = ["./valo_mapdata/acent/*","./valo_mapdata/bind/*","./valo_mapdata/icebox/*","./valo_mapdata/breeze/*","./valo_mapdata/heaven/*","./valo_mapdata/split/*","./valo_mapdata/frac/*"]
+path_load_list = ["./valo_mapdata/acent/*", "./valo_mapdata/bind/*", "./valo_mapdata/icebox/*", "./valo_mapdata/breeze/*", "./valo_mapdata/heaven/*", "./valo_mapdata/split/*", "./valo_mapdata/frac/*"]
 quiz_image_container = []
 
 for path in path_load_list:
@@ -60,7 +60,7 @@ quiz_image_container.append(quiz_tmp)
 # 問題の内容のinput
 # ACENT=0,BIND=1,ICEBOX=2,Breeze=3,Haven=4,Split=5,Fracture=6
 # https://script.google.com/home/projects/1F5b4P1ZTg3mKhHuqU3XwWMKm40Ue1Q_1mNUtwPNRw8RjbNnot110fH4d/edit
-with open('valo_mapdata/valo_quiz_data.csv','r',encoding="utf-8_sig") as f:
+with open('valo_mapdata/valo_quiz_data.csv', 'r',encoding="utf-8_sig") as f:
     reader = csv.reader(f)
     list_csv = [row for row in reader]
 print(list_csv)
@@ -79,11 +79,11 @@ async def on_ready():
     # 起動したらターミナルにログイン通知が表示される
     print('ログインしました')
 
-async def map_name_sender(message,cmd,map_commands):
+async def map_name_sender(message, cmd, map_commands):
     for map_name in map_commands:
-        await message.channel.send("/"+cmd[1:]+" " + map_name[:len(map_name)-len(".jpg")])
+        await message.channel.send("/" + cmd[1:] + " " + map_name[:len(map_name)-len(".jpg")])
 
-async def map_image_sender(message, map_name,files, path = "image/map/overall/",extension = ".jpg"):
+async def map_image_sender(message, map_name, files, path = "image/map/overall/", extension = ".jpg"):
     print(path + map_name + extension)
     print(files)
     for f in files:
@@ -93,7 +93,7 @@ async def map_image_sender(message, map_name,files, path = "image/map/overall/",
             return
     await message.channel.send("マップ名が違います")
 
-async def map_quiz_generater(message,map_num = 0,image_path = "valo_mapdata/acent/",map_cmd = "/acent"):
+async def map_quiz_generater(message, map_num = 0, image_path = "valo_mapdata/acent/", map_cmd = "/acent"):
     global ANS_CNT
     random_list = random.sample(range(0, len(quiz_image_container[map_num])), k = len(quiz_image_container[map_num]))
     random_range = random.sample(range(0, 3), k = 3)
@@ -134,7 +134,7 @@ async def map_quiz_generater(message,map_num = 0,image_path = "valo_mapdata/acen
 async def on_message(message):
     global ANS_CNT
     if message.content == '?map' or  message.content == '?ans':
-        await map_name_sender(message,message.content, map_commands_str)
+        await map_name_sender(message, message.content, map_commands_str)
 
     if message.content.startswith('/zeta_map'):
         # 入力を分割
@@ -142,43 +142,43 @@ async def on_message(message):
         if len(input_list) != 2:
             await message.channel.send("/zeta_map マップ名")
         else:
-            await map_image_sender(message,input_list[1],zeta_map_files,"image/zeta_map/")
+            await map_image_sender(message, input_list[1], zeta_map_files, "image/zeta_map/")
     # 画像とボタンを利用してクイズを出す
     # ACENT=0,BIND=1,ICEBOX=2,Breeze=3,Haven=4,Split=5,Fracture=6
     if message.content == '/acent':
         if start_quiz:
-            await map_quiz_generater(message,0)
+            await map_quiz_generater(message, 0)
         else :
             # ネタバレしたくないならSPOILER入れてもいいかも
             await message.channel.send('/ans acent')
     if message.content == '/bind':
         if start_quiz:
-            await map_quiz_generater(message,1,"valo_mapdata/bind/",message.content)
+            await map_quiz_generater(message, 1, "valo_mapdata/bind/", message.content)
         else :
             await message.channel.send('/ans bind')
     if message.content == '/icebox':
         if start_quiz:
-            await map_quiz_generater(message,2,"valo_mapdata/icebox/",message.content)
+            await map_quiz_generater(message, 2, "valo_mapdata/icebox/", message.content)
         else :
             await message.channel.send('/ans '+message.content[1:])
     if message.content == '/breeze':
         if start_quiz:
-            await map_quiz_generater(message,3,"valo_mapdata/breeze/",message.content)
+            await map_quiz_generater(message, 3, "valo_mapdata/breeze/", message.content)
         else :
             await message.channel.send('/ans breeze')
     if message.content == '/heaven':
         if start_quiz:
-            await map_quiz_generater(message,4,"valo_mapdata/"+message.content[1:]+"/",message.content)
+            await map_quiz_generater(message, 4, "valo_mapdata/"+message.content[1:]+"/", message.content)
         else :
             await message.channel.send('/ans '+message.content[1:])
     if message.content == '/split':
         if start_quiz:
-            await map_quiz_generater(message,5,"valo_mapdata/"+message.content[1:]+"/",message.content)
+            await map_quiz_generater(message, 5, "valo_mapdata/"+message.content[1:]+"/", message.content)
         else :
             await message.channel.send('/ans '+message.content[1:])
     if message.content == '/frac':
         if start_quiz:
-            await map_quiz_generater(message,6,"valo_mapdata/"+message.content[1:]+"/",message.content)
+            await map_quiz_generater(message, 6, "valo_mapdata/"+message.content[1:]+"/", message.content)
         else :
             await message.channel.send('/ans '+message.content[1:])
     # メッセージ送信者がBotだった場合は無視する
@@ -190,9 +190,9 @@ async def on_message(message):
         if len(input_list) != 2:
             await message.channel.send("/ans マップ名")
         else:
-            await map_image_sender(message,input_list[1],map_files)
+            await map_image_sender(message, input_list[1], map_files)
     if message.content == '?zeta_map':
-        await map_name_sender(message, message.content,zeta_map_commands_str)
+        await map_name_sender(message, message.content, zeta_map_commands_str)
 
     # 発言時に実行されるイベントハンドラを定義
     if client.user in message.mentions: # 話しかけられたかの判定
