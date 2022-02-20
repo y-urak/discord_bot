@@ -30,7 +30,7 @@ zeta_map_files = glob.glob("./image/zeta_map/*")
 zeta_map_commands_str = []
 for f in zeta_map_files:
     tmp = f.split("/")
-    map_name = tmp[2].split("\\")
+    map_name = tmp[3]
     print(map_name)
     zeta_map_commands_str.append(map_name[1][:len(map_name[1])])
 
@@ -43,7 +43,7 @@ for path in path_load_list:
     quiz_tmp = []
     for f in glob.glob(path):
         tmp = f.split("/")
-        map_name = tmp[2].split("\\")
+        map_name = tmp[3]
         print(map_name)
         quiz_tmp.append(map_name[1][:len(map_name[1])])
     quiz_image_container.append(quiz_tmp)
