@@ -19,6 +19,7 @@ CHANNEL_ID = 895578786303733771
 # ファイルの情報取得 -> コマンドで画像情報の一覧表示に利用
 map_files = glob.glob("./image/map/overall/*")
 map_commands_str = []
+print(map_files)
 for f in map_files:
     tmp = f.split("/")
     map_name = tmp[3].split("\\")
