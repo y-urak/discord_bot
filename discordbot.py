@@ -22,7 +22,7 @@ map_commands_str = []
 print(map_files)
 for f in map_files:
     tmp = f.split("/")
-    map_name = tmp[3].split("\\")
+    map_name = tmp[4]
     print(map_name)
     map_commands_str.append(map_name[1][:len(map_name[1])])
 
@@ -47,16 +47,6 @@ for path in path_load_list:
         print(map_name)
         quiz_tmp.append(map_name[1][:len(map_name[1])])
     quiz_image_container.append(quiz_tmp)
-
-'''
-quiz_tmp = []
-for f in glob.glob("./valo_mapdata/acent/*"):
-    tmp = f.split("/")
-    map_name = tmp[2].split("\\")
-    print(map_name)
-    quiz_tmp.append(map_name[1][:len(map_name[1])])
-quiz_image_container.append(quiz_tmp)
-'''
 
 # 問題の内容のinput
 # ACENT=0,BIND=1,ICEBOX=2,Breeze=3,Haven=4,Split=5,Fracture=6
