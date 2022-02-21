@@ -9,7 +9,7 @@ discord.py==1.7.3
 docutils==0.17.1
 glob2==0.7
 gunicorn==20.1.0
-idna==2.10
+idna==3.3
 multidict==6.0.2
 Pygments==2.9.0
 requests==2.25.1
