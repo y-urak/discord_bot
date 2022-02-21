@@ -6,7 +6,7 @@ chardet==4.0.0
 discord==1.7.3
 discord-ui==5.1.6
 discord.py==1.7.3
-docutils==0.17.1
+docutils==0.18.1
 glob2==0.7
 gunicorn==20.1.0
 idna==2.10
