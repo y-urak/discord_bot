@@ -14,7 +14,7 @@ import random
 # ----- 前処理 -------
 TOKEN = 'OTQxMzExNjQyNDEzNzE1NTA2.YgUGyA.-mGr8VPuZ642FaCO88I1aX9zOlE'
 # 任意のチャンネルID(int)
-CHANNEL_ID = 895578786303733771
+CHANNEL_ID = 945566202024046632
 
 # ファイルの情報取得 -> コマンドで画像情報の一覧表示に利用
 map_files = glob.glob("./image/map/overall/*")
